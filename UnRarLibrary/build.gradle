@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation files('libs/gnu-crypto.jar')
+}
+
+task makeJar(type: Jar) {
+    archivesBaseName = "UnRarLib"
+    from(project.zipTree('build/intermediates/packaged-classes/release/classes.jar'))
+    from(project.zipTree('build/intermediates/packaged-classes/release/libs/gnu-crypto.jar'))
+    destinationDir = file('build/libs')
+}
+makeJar.dependsOn(build)

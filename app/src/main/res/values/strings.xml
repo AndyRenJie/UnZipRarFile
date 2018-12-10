@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">UnRarSample</string>
+    <string name="decompression">解压</string>
+    <string name="please_input_password">请输入密码</string>
+    <string name="password_is_empty">密码不能为空!!</string>
+    <string name="passowrd_error">密码错误，请输入正确的密码</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+    <string name="add_file">新建</string>
+    <string name="add_file_no_open">新建文件功能暂未开放，后期更新</string>
+    <string name="file_copy_error">文件复制失败</string>
+    <string name="un_file_success">解压成功</string>
+    <string name="operation_failed">操作失败</string>
+</resources>
