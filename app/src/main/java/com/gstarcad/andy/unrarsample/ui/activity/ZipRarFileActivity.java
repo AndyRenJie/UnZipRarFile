@@ -250,10 +250,10 @@ public class ZipRarFileActivity extends AppCompatActivity {
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                 if (showZipRarFileList != null && showZipRarFileList.size() > 0) {
                     final FileModel fileModel = showZipRarFileList.get(position);
-                    strCurrectPath = fileModel.getFilePath();
                     //如果预览是文件夹
                     if (fileModel.isDir()) {
                         splitIndex++;
+                        strCurrectPath = fileModel.getFilePath();
                         layeredShowByPath(zipOrRarFileModelList, strCurrectPath);
                     }
                     //如果预览是文件
@@ -309,6 +309,12 @@ public class ZipRarFileActivity extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        goBack();
+    }
+
 
     /**
      * 返回上一级
