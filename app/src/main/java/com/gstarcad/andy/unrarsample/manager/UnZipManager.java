@@ -2,6 +2,7 @@ package com.gstarcad.andy.unrarsample.manager;
 
 import android.os.Environment;
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.gstarcad.andy.unrarsample.bean.FileModel;
 import com.gstarcad.andy.unrarsample.utils.DateUtils;
@@ -15,6 +16,7 @@ import net.lingala.zip4j.util.Zip4jConstants;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -105,15 +107,15 @@ public class UnZipManager {
         // 文件目录的容器
         List<FileModel> listFiles = new ArrayList<>();
         try {
-            MyZipFile zipFile = new MyZipFile(srcFile);
+            ZipFile zipFile = new ZipFile(srcFile);
             zipFile.setFileNameCharset("GBK");
             List<FileHeader> list = zipFile.getFileHeaders();
             FileModel fileModel;
             for (FileHeader fileHeader : list) {
                 fileModel = new FileModel();
                 if (!fileHeader.getFileName().startsWith(".")) {
-                    long fileDate = fileHeader.getLastModFileTime();
-                    Date date = new Date(fileDate);
+                    int fileDate = fileHeader.getLastModFileTime();
+                    Date date = getDateDos(fileDate);
                     String formatDate = DateUtils.getDateToString(date);
                     long fileSize = fileHeader.getUncompressedSize();
                     String formatSize = FileUtils.formatFileSize(fileSize);
@@ -127,9 +129,7 @@ public class UnZipManager {
                         fileName = fileHeader.getFileName().replace("/", "\\");
                         filePath = fileHeader.getFileName().replace("/", "\\");
                     }
-
                     String fileType = FileUtils.getFileExtensionNoPoint(fileName);
-
                     fileModel.setFileName(fileName);
                     fileModel.setFilePath(filePath);
                     fileModel.setFileDate(fileDate);
@@ -144,9 +144,27 @@ public class UnZipManager {
                 }
             }
         } catch (Exception e) {
+            Log.e("Ren", "exception = " + e.getMessage());
             e.printStackTrace();
         }
         return listFiles;
+    }
+
+    /**
+     * 处理时间格式
+     *
+     * @param time
+     * @return
+     */
+    private Date getDateDos(int time) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, (time >>> 25) + 1980);
+        cal.set(Calendar.MONTH, ((time >>> 21) & 0x0f) - 1);
+        cal.set(Calendar.DAY_OF_MONTH, (time >>> 16) & 0x1f);
+        cal.set(Calendar.HOUR_OF_DAY, (time >>> 11) & 0x1f);
+        cal.set(Calendar.MINUTE, (time >>> 5) & 0x3f);
+        cal.set(Calendar.SECOND, (time & 0x1f) * 2);
+        return cal.getTime();
     }
 
     /**
