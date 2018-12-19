@@ -2,7 +2,6 @@ package com.gstarcad.andy.unrarsample.manager;
 
 import android.os.Environment;
 import android.text.TextUtils;
-import android.util.Log;
 
 import com.gstarcad.andy.unrarsample.bean.FileModel;
 import com.gstarcad.andy.unrarsample.utils.DateUtils;
