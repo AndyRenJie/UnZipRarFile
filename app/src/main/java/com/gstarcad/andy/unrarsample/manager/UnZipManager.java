@@ -107,7 +107,7 @@ public class UnZipManager {
         // 文件目录的容器
         List<FileModel> listFiles = new ArrayList<>();
         try {
-            ZipFile zipFile = new ZipFile(srcFile);
+            MyZipFile zipFile = new MyZipFile(srcFile);
             zipFile.setFileNameCharset("GBK");
             List<FileHeader> list = zipFile.getFileHeaders();
             FileModel fileModel;
