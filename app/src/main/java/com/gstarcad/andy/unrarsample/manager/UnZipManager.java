@@ -13,6 +13,7 @@ import net.lingala.zip4j.core.ZipFile;
 import net.lingala.zip4j.model.FileHeader;
 import net.lingala.zip4j.model.ZipParameters;
 import net.lingala.zip4j.util.Zip4jConstants;
+import net.lingala.zip4j.util.Zip4jUtil;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -115,7 +116,8 @@ public class UnZipManager {
                 fileModel = new FileModel();
                 if (!fileHeader.getFileName().startsWith(".")) {
                     int fileDate = fileHeader.getLastModFileTime();
-                    Date date = getDateDos(fileDate);
+                    Date date = new Date(Zip4jUtil.dosToJavaTme(fileDate));
+                    // Date date = getDateDos(fileDate);
                     String formatDate = DateUtils.getDateToString(date);
                     long fileSize = fileHeader.getUncompressedSize();
                     String formatSize = FileUtils.formatFileSize(fileSize);
@@ -144,7 +146,6 @@ public class UnZipManager {
                 }
             }
         } catch (Exception e) {
-            Log.e("Ren", "exception = " + e.getMessage());
             e.printStackTrace();
         }
         return listFiles;
