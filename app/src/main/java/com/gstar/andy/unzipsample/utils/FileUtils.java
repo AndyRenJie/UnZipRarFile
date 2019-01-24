@@ -534,7 +534,7 @@ public class FileUtils {
     }
 
     /**
-     * 临时文件夹(主要存放图纸缩略图文件)
+     * 临时文件夹
      */
     public static String getAppTempPath() {
         return getAvailableFilesPathAndroidData(true) + DEFAULT_TEMP;
