@@ -13,11 +13,11 @@
         android:background="@color/colorPrimary"
         app:title="@string/app_name"
         app:titleTextColor="@color/colorWhite"
-        tools:targetApi="lollipop"></android.support.v7.widget.Toolbar>
+        tools:targetApi="lollipop"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_ziprar_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
