@@ -24,13 +24,13 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation files('libs/gnu-crypto.jar')
+    implementation 'org.gnu:gnu-crypto:2.0.1'
 }
 
-task makeJar(type: Jar) {
-    archivesBaseName = "UnRarLib"
-    from(project.zipTree('build/intermediates/packaged-classes/release/classes.jar'))
-    from(project.zipTree('build/intermediates/packaged-classes/release/libs/gnu-crypto.jar'))
-    destinationDir = file('build/libs')
-}
-makeJar.dependsOn(build)
+//task makeJar(type: Jar) {
+//    archivesBaseName = "UnRarLib"
+//    from(project.zipTree('build/intermediates/packaged-classes/release/classes.jar'))
+//    //from(project.zipTree('build/intermediates/packaged-classes/release/libs/gnu-crypto-2.1.0.jar'))
+//    destinationDir = file('build/libs')
+//}
+//makeJar.dependsOn(build)
