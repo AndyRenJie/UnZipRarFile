@@ -18,7 +18,7 @@
             android:src="@mipmap/ic_back_white_nor" />
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
@@ -29,10 +29,10 @@
                 android:gravity="center_vertical"
                 android:textColor="@color/colorWhite" />
 
-            <android.support.v7.widget.RecyclerView
+            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_file_path"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+                android:layout_height="match_parent" />
 
         </RelativeLayout>
 
@@ -50,10 +50,10 @@
         android:layout_height="match_parent"
         android:background="@color/colorWhite">
 
-        <android.support.v7.widget.RecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_file_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent" />
 
         <ProgressBar
             android:id="@+id/progress_bar"

@@ -16,7 +16,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.activity.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -25,14 +25,14 @@
 
         <activity
             android:name=".ui.activity.ZipRarFileActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="fullSensor" />
 
         <activity
             android:name=".ui.activity.PathSelectedActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="fullSensor" />
 
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="com.gstar.andy.unzipsample.android7.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true"
