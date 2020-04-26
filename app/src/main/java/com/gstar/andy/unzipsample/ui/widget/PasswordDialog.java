@@ -3,11 +3,12 @@ package com.gstar.andy.unzipsample.ui.widget;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.gstar.andy.unzipsample.R;
 import com.gstar.andy.unzipsample.manager.UnRarManager;
