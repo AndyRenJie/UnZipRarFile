@@ -33,7 +33,7 @@ public class AssetsUtils {
         File file;
         try {
             inputStream = assetManager.open(assetsFileName);
-            file = new File(SD_FILE_PATH + "/UnRar/" + assetsFileName);
+            file = new File(context.getExternalFilesDir("") + "/" + assetsFileName);
             if (file.exists()) {
                 file.delete();
             }
